@@ -1,19 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-obsidian-0 text-obsidian-textPrimary antialiased selection:bg-obsidian-accent selection:text-obsidian-0;
+    @apply bg-obsidian-0 text-obsidian-textPrimary antialiased;
+  }
+
+  ::selection {
+    background: rgba(0, 242, 255, 0.25);
+    color: #fff;
   }
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/* ── Custom scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar          { width: 4px; height: 4px; }
+::-webkit-scrollbar-track    { background: #0f111a; }
+::-webkit-scrollbar-thumb    { background: #2a2f40; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 242, 255, 0.35); }
 
-@layer base {
-  body {
-    @apply antialiased text-obsidian-textPrimary bg-obsidian-0;
+/* ── Utilities ────────────────────────────────────────────── */
+@layer utilities {
+  /* Circuit-trace grid overlay */
+  .bg-circuit {
+    background-image:
+      linear-gradient(rgba(0, 242, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 242, 255, 0.025) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Cyan glow on text */
+  .text-glow {
+    text-shadow: 0 0 28px rgba(0, 242, 255, 0.55);
+  }
+  .text-glow-sm {
+    text-shadow: 0 0 14px rgba(0, 242, 255, 0.4);
+  }
+
+  /* Hide scrollbar visually but keep scroll functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Thin top-accent border used by cards/header */
+  .border-top-accent {
+    border-top: 1px solid rgba(0, 242, 255, 0.35);
   }
 }

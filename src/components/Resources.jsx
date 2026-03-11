@@ -6,8 +6,11 @@ const Resources = () => {
     return (
         <section id="resources" className="py-20 bg-obsidian-0 border-t border-obsidian-2">
             <div className="max-w-6xl mx-auto px-6">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl font-bold text-obsidian-textPrimary mb-4">Resources Hub</h2>
+                <div className="text-center mb-16 animate-fade-in-up">
+                    <span className="inline-block text-obsidian-accent font-mono text-xs font-bold tracking-[0.2em] uppercase mb-3 px-3 py-1 bg-obsidian-accent/10 rounded-full border border-obsidian-accent/20">
+                        References
+                    </span>
+                    <h2 className="text-4xl font-heading font-bold text-obsidian-textPrimary mb-4">Resources Hub</h2>
                     <p className="text-lg text-obsidian-textSecondary max-w-2xl mx-auto">
                         Everything you need to go deep.
                     </p>

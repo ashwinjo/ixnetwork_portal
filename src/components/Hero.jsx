@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import {
-    Download, Play, Code, BookOpen, ArrowRight,
+    Download, Play, Code, ArrowRight,
     ChevronDown, ChevronUp, Terminal, Monitor,
     Database, ExternalLink, Zap, Search,
-    Cloud, Layers,
+    Cloud, Layers, Bot,
 } from 'lucide-react';
 import { versions } from '../data/versions';
 import { iacProviders } from '../data/links';
@@ -75,9 +75,9 @@ const Hero = (props) => {
                     <ActionCard icon={Download} step="01" title="Download"  desc="Get IxNetwork & tools"       href="https://support.ixiacom.com/support-overview/product-support/downloads-updates" />
                     <ActionCard icon={Play}     step="02" title="Deploy"    desc="Install and configure"       isActive={showDeployGuide} onClick={() => setShowDeployGuide(v => !v)} />
                     <ActionCard icon={Code}     step="03" title="Anatomy Of  IxNetwork Test" desc="Your first test"           href="#anatomy" />
-                    <ActionCard icon={BookOpen} step="04" title="Learn"     desc="Explore patterns"            href="#foundation" />
-                    <ActionCard icon={Database} step="05" title="API Ref"   desc="Browse documentation"        onClick={() => props.onNavigate?.('api')} />
-                    <ActionCard icon={Search}   step="06" title="Code Samples" desc="Searchable RestPy examples" href="https://dancing-speculoos-28453f.netlify.app/" isExternal />
+                    <ActionCard icon={Database} step="04" title="API Ref"   desc="Browse documentation"        onClick={() => props.onNavigate?.('api')} />
+                    <ActionCard icon={Search}   step="05" title="Code Samples" desc="Searchable RestPy examples" href="https://dancing-speculoos-28453f.netlify.app/" isExternal />
+                    <ActionCard icon={Bot}      step="06" title="IxNetwork MCP" desc="AI agent integration"   href="https://github.com/ashwinjo/ixia-inventory-management-mcp" isExternal />
                 </div>
 
                 <IaCSection />
@@ -135,54 +135,20 @@ const Hero = (props) => {
                                                     and copy it to your Linux host.
                                                 </p>
                                             </DeployStep>
-                                            <DeployStep number="2" title="Prerequisites" icon={Terminal}>
-                                                <p className="text-sm text-obsidian-textSecondary mb-2">Enable promiscuous mode on the interface:</p>
-                                                <CodeBlock>ifconfig eth1 promisc</CodeBlock>
-                                            </DeployStep>
-                                            <DeployStep number="3" title="Load Image" icon={Database}>
-                                                <CodeBlock>{`tar xjf Ixia_IxNetworkWeb_Docker_9.00.tar.bz2\ndocker load -i Ixia_IxNetworkWeb_Docker_9.00.tar`}</CodeBlock>
+                                            <DeployStep number="2" title="Load Image" icon={Database}>
+                                                <CodeBlock>{`$ tar xjf Ixia_IxNetworkWeb_Docker_<version_number>.tar.bz2\n\ndocker load -i Ixia_IxNetworkWeb_Docker_<version_number>.tar`}</CodeBlock>
                                             </DeployStep>
                                         </div>
 
                                         <div className="space-y-6">
                                             <div className="bg-obsidian-2 p-4 rounded-xl border border-obsidian-2">
                                                 <h4 className="font-bold text-obsidian-textPrimary text-sm mb-4">4. Run Container</h4>
-                                                <p className="text-xs font-semibold text-obsidian-textSecondary mb-2">Option A — MAC VLAN Bridge</p>
-                                                <CodeBlock>{`docker run --net <network_name> \\\n  --ip <ip_address> \\\n  --hostname <hostname> \\\n  --name <container_name> \\\n  --cap-add=SYS_ADMIN \\\n  --cap-add=NET_ADMIN \\\n  -i -d \\\n  -v /sys/fs/cgroup:/sys/fs/cgroup \\\n  --tmpfs /run`}</CodeBlock>
-                                                <p className="text-xs font-semibold text-obsidian-textSecondary mt-4 mb-2">Option B — HTTPS Port Mapping</p>
+                                                <p className="text-xs font-semibold text-obsidian-textSecondary mb-2">HTTPS Port Mapping</p>
                                                 <CodeBlock>{`docker run \\\n  -p <host_port>:443 \\\n  --cap-add=SYS_ADMIN \\\n  --cap-add=NET_ADMIN \\\n  -i -d \\\n  -v /sys/fs/cgroup:/sys/fs/cgroup \\\n  --tmpfs /run`}</CodeBlock>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div>
-                                        <h4 className="font-bold text-obsidian-textPrimary text-sm mb-4">MacVlan vs Port Forwarding</h4>
-                                        <div className="overflow-x-auto border border-obsidian-2 rounded-lg">
-                                            <table className="w-full text-sm text-left text-obsidian-textSecondary">
-                                                <thead className="bg-obsidian-2 text-obsidian-textPrimary font-semibold border-b border-obsidian-3">
-                                                    <tr>
-                                                        <th className="px-4 py-2">Feature</th>
-                                                        <th className="px-4 py-2">MACVLAN Bridge (A)</th>
-                                                        <th className="px-4 py-2">Port Mapping (B)</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody className="divide-y divide-obsidian-2 bg-obsidian-1">
-                                                    {[
-                                                        ['Visibility',   'Acts as physical device (Unique MAC/IP)',   'Hidden behind Host IP (Shared MAC/IP)'],
-                                                        ['Performance',  'High — L2 direct, minimal overhead',        'Medium — NAT/iptables overhead'],
-                                                        ['Complexity',   'Higher — requires promiscuous mode',         'Lower — standard Docker behavior'],
-                                                        ['Use Case',     'Benchmarking & Protocol Emulation',          'Web UI Access & REST API integration'],
-                                                    ].map(([feat, a, b]) => (
-                                                        <tr key={feat}>
-                                                            <td className="px-4 py-2 font-medium text-obsidian-textPrimary">{feat}</td>
-                                                            <td className="px-4 py-2">{a}</td>
-                                                            <td className="px-4 py-2">{b}</td>
-                                                        </tr>
-                                                    ))}
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
                                 </div>
                             )}
 
