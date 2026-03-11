@@ -289,56 +289,56 @@ const DeployStep = ({ number, title, icon: Icon, children }) => (
 );
 
 const IaCSection = () => (
-  <div className="max-w-6xl mx-auto mb-12 animate-fade-in-up">
-    <div className="flex items-center gap-3 mb-4">
-      <span className="inline-block text-obsidian-accent font-mono text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1 bg-obsidian-accent/10 rounded-full border border-obsidian-accent/20">
-        Infrastructure as Code
-      </span>
-      <span className="text-obsidian-textSecondary text-xs font-mono">
-        IxNetwork VE — Cloud Deployment
-      </span>
+    <div className="max-w-6xl mx-auto mb-12 animate-fade-in-up">
+        <div className="flex items-center gap-3 mb-4">
+            <span className="inline-block text-obsidian-accent font-mono text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1 bg-obsidian-accent/10 rounded-full border border-obsidian-accent/20">
+                Infrastructure as Code
+            </span>
+            <span className="text-obsidian-textSecondary text-xs font-mono">
+                IxNetwork VE — Cloud Deployment
+            </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+            {iacProviders.map((provider) => {
+                const Icon = { Cloud, Terminal, Layers }[provider.iconName];
+                return (
+                    <div
+                        key={provider.name}
+                        className={`group relative bg-obsidian-1 p-4 rounded-xl border border-obsidian-2 transition-all duration-300 flex flex-col ${provider.accentClass}`}
+                    >
+                        <div className="flex items-center gap-2 mb-2">
+                            <div className={`p-1.5 rounded-lg ${provider.color}`}>
+                                {Icon && <Icon size={16} />}
+                            </div>
+                            <span className="font-heading font-bold text-obsidian-textPrimary text-sm">
+                                {provider.name}
+                            </span>
+                        </div>
+
+                        <p className="text-[11px] text-obsidian-textSecondary mb-3 leading-relaxed">
+                            {provider.desc}
+                        </p>
+
+                        <div className="mt-auto flex flex-col gap-1.5">
+                            {provider.tools.map((tool) => (
+                                <a
+                                    key={`${provider.name}-${tool.label}`}
+                                    href={tool.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center justify-between text-[11px] font-mono text-obsidian-textSecondary hover:text-obsidian-accent transition-colors group/link"
+                                >
+                                    <span>{tool.label}</span>
+                                    <ExternalLink size={10} className="opacity-40 group-hover/link:opacity-100 transition-opacity" />
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                );
+            })}
+        </div>
     </div>
-
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-      {iacProviders.map((provider) => {
-        const Icon = { Cloud, Terminal, Layers }[provider.iconName];
-        return (
-          <div
-            key={provider.name}
-            className={`group relative bg-obsidian-1 p-4 rounded-xl border border-obsidian-2 transition-all duration-300 flex flex-col ${provider.accentClass}`}
-          >
-            <div className="flex items-center gap-2 mb-2">
-              <div className={`p-1.5 rounded-lg ${provider.color}`}>
-                {Icon && <Icon size={16} />}
-              </div>
-              <span className="font-heading font-bold text-obsidian-textPrimary text-sm">
-                {provider.name}
-              </span>
-            </div>
-
-            <p className="text-[11px] text-obsidian-textSecondary mb-3 leading-relaxed">
-              {provider.desc}
-            </p>
-
-            <div className="mt-auto flex flex-col gap-1.5">
-              {provider.tools.map((tool) => (
-                <a
-                  key={tool.label}
-                  href={tool.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between text-[11px] font-mono text-obsidian-textSecondary hover:text-obsidian-accent transition-colors group/link"
-                >
-                  <span>{tool.label}</span>
-                  <ExternalLink size={10} className="opacity-40 group-hover/link:opacity-100 transition-opacity" />
-                </a>
-              ))}
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  </div>
 );
 
 export default Hero;
