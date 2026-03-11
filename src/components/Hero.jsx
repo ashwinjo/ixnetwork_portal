@@ -77,7 +77,7 @@ const Hero = (props) => {
                     <ActionCard icon={Code}     step="03" title="Anatomy Of  IxNetwork Test" desc="Your first test"           href="#anatomy" />
                     <ActionCard icon={Database} step="04" title="API Ref"   desc="Browse documentation"        onClick={() => props.onNavigate?.('api')} />
                     <ActionCard icon={Search}   step="05" title="Code Samples" desc="Searchable RestPy examples" href="https://dancing-speculoos-28453f.netlify.app/" isExternal />
-                    <ActionCard icon={Bot}      step="06" title="IxNetwork MCP" desc="AI agent integration"   href="https://github.com/ashwinjo/ixia-inventory-management-mcp" isExternal />
+                    <ActionCard icon={Bot}      step="06" title="IxNetwork MCP" desc="AI agent integration"   href="https://github.com/ashwinjo/ixnetwork-mcp" isExternal />
                 </div>
 
                 <IaCSection />
