@@ -34,8 +34,8 @@ export const iacProviders = [
     color: 'bg-orange-500/10 text-orange-400 border border-orange-500/20',
     accentClass: 'group-hover:border-orange-400/50 group-hover:shadow-[0_0_16px_rgba(251,146,60,0.12)]',
     tools: [
-      { label: 'Terraform', url: 'https://github.com/Keysight/ixnetworkve/tree/main/AWS/Terraform' },
-      { label: 'CloudFormation', url: 'https://github.com/Keysight/ixnetworkve/tree/main/AWS/CloudFormation' },
+      { label: 'Terraform', url: 'https://github.com/Keysight/ixnetworkve/tree/main/aws/Deployment/Terraform' },
+      { label: 'CloudFormation', url: 'https://github.com/Keysight/ixnetworkve/tree/main/aws/Deployment/CloudFormation' },
     ],
   },
   {
@@ -45,8 +45,8 @@ export const iacProviders = [
     color: 'bg-blue-500/10 text-blue-400 border border-blue-500/20',
     accentClass: 'group-hover:border-blue-400/50 group-hover:shadow-[0_0_16px_rgba(96,165,250,0.12)]',
     tools: [
-      { label: 'Terraform', url: 'https://github.com/Keysight/ixnetworkve/tree/main/Azure/Terraform' },
-      { label: 'ARM', url: 'https://github.com/Keysight/ixnetworkve/tree/main/Azure/ARM' },
+      { label: 'Terraform', url: 'https://github.com/Keysight/ixnetworkve/tree/main/microsoft-azure/Deployment/Terraform' },
+      { label: 'ARM', url: 'https://github.com/Keysight/ixnetworkve/tree/main/microsoft-azure/Deployment/AzureResourceManager' },
     ],
   },
   {
@@ -56,9 +56,9 @@ export const iacProviders = [
     color: 'bg-green-500/10 text-green-400 border border-green-500/20',
     accentClass: 'group-hover:border-green-400/50 group-hover:shadow-[0_0_16px_rgba(74,222,128,0.12)]',
     tools: [
-      { label: 'Terraform', url: 'https://github.com/Keysight/ixnetworkve/tree/main/GCP/Terraform' },
-      { label: 'DeploymentManager', url: 'https://github.com/Keysight/ixnetworkve/tree/main/GCP/DeploymentManager' },
-      { label: 'CloudShell', url: 'https://github.com/Keysight/ixnetworkve/tree/main/GCP/CloudShell' },
+      { label: 'Terraform', url: 'https://github.com/Keysight/ixnetworkve/tree/main/google-cloud-platform/Deployment/Terraform' },
+      { label: 'DeploymentManager', url: 'https://github.com/Keysight/ixnetworkve/tree/main/google-cloud-platform/Deployment/DeploymentManager' },
+      { label: 'CloudShell', url: 'https://github.com/Keysight/ixnetworkve/tree/main/google-cloud-platform/Deployment/CloudShell' },
     ],
   },
   {
